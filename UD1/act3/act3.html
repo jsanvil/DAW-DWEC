@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const LETRAS_DNI = 'TRWAGMYFPDXBNJZSQVHLCKE';
+        function compruebaDNI(dni) {
+            dni = dni.toUpperCase();
+            let numero = dni.substr(0, dni.length - 1);
+            let letra = dni.charAt(dni.length - 1);
+            let pos = numero % 23;
+            if (LETRAS_DNI[pos] === letra) {
+                alert("El DNI " + dni + " es correcto");
+            }
+            else {
+                alert("El DNI " + dni + " no es correcto, su letra es " + LETRAS_DNI[pos]);
+            }
+        }
+
+        let dni;
+        do {
+            dni = prompt("Introduce un DNI");
+            compruebaDNI(dni);
+        } while (dni);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
