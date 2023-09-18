@@ -1,0 +1,18 @@
+<script>
+    function notaMedia(arrayNotas) {
+        let suma = 0;
+        let totalNotas = 0;
+        for (nota of arrayNotas) {
+            suma += nota;
+            totalNotas++;
+        }
+        let media = suma / totalNotas;
+        console.log("Antes de toFixed: " + media);
+        media = media.toFixed(2);
+        media = parseFloat(media);
+        return media;
+    }
+
+    let media = notaMedia([3,8,3,4,5,6,7]);
+    console.log(media);
+</script>
