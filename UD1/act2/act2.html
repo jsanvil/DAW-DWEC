@@ -1,0 +1,18 @@
+<script>
+    function cubo(numero) {
+        if (! Number.isInteger(numero)) {
+            return false;
+        }
+        let resultado = numero;
+        for (let i=1; i<numero; i++) {
+            resultado *= numero;
+        }
+        alert(resultado);
+        return resultado;
+    }
+
+    console.log(cubo(3));    // alert + resultado
+    console.log(cubo("3"));  // false
+    console.log(cubo(3.3));  // false
+    console.log(cubo(null)); // false
+</script>
