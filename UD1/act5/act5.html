@@ -1,0 +1,27 @@
+<script>
+/*
+   EJERCICIO 5:
+   Haz una arrow function que devuelva el cubo
+   del número pasado como parámetro y pruébala desde la consola.
+   Escríbela primero en la forma habitual y luego la "traduces"
+   a arrow function.
+*/
+
+    cubo(3); // hoisting, podemos ejecutar una funcion antes de declararla
+
+    // arrow function
+    let cubo = (numero) => numero * numero * numero;
+
+
+    // Ejemplo complejo de arrow function
+    // aplicando lo aprendido hasta el momento
+    let hola = (numero, fn=cubo) => {
+        // String expresado como template literal `${}`
+        console.log(`Hola ${fn(numero)}`)
+        // equivale a concatenar strings
+        console.log('Hola ' + fn(numero))
+    };
+    let num = prompt("Dame un número:");
+    hola(num, cubo);
+
+</script>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="margin: 0 auto; width: 500px;"><marquee><span style="font-size: 100px;">🐘 🦒 🐄 🐐 🦆 🐧 🦔</span></marquee> El fantástico juego de los números</h1>
+    <div id="prueba"></div>
+    <script>
+        let acierto = false;
+        let secreto = Math.floor(Math.random() * 10) + 1;
+        while(!acierto) {
+            let intento = prompt('Dame un número del 1 al 100:');
+            if (!intento) {
+                break;
+            }
+        }
+        if (acierto) alert('Ganaste!!! el número era ' + secreto);
+    </script>
+</body>
+</html>
