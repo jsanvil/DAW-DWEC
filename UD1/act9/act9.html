@@ -1,0 +1,23 @@
+<script>
+'use strict'
+let media = (notas) => {
+    let suma = 0;
+    for (nota of notas) {
+        if (nota < 0 || nota > 10) {
+            //throw 'Existe una nota no válida ' + nota;
+            throw RangeError('Existe una nota no válida ' + nota);
+        }
+        suma += nota;
+    }
+    return (suma / notas.length).toFixed(2);
+}
+
+let notas = [5.6, 3.2, 7.8, 5, 9.9, 4.99, -1];
+
+console.log(`Control de errores:`);
+try {
+    console.log(media(notas));
+} catch(err) {
+    console.error(err);
+}
+</script>
