@@ -1,0 +1,44 @@
+<script>
+/*
+  ACTIVIDAD 8: 📂 UD1/act8/act8.html
+  Haz 3 funciones a las que se le pasa como parámetro un array de notas
+  y devuelve la nota media. Cada una usará un for de una de las 3 formas
+  vistas. Pruébalas en la consola
+*/
+
+let forCont = (notas) => {
+    let suma = 0;
+    for (let i=0; i<notas.length; i++) {
+        suma += notas[i];
+    }
+    return (suma / notas.length).toFixed(2);
+}
+
+let forIn = (notas) => {
+    let suma = 0;
+    for (i in notas) {
+        suma += notas[i];
+    }
+    return (suma / notas.length).toFixed(2);
+}
+
+let forOf = (notas) => {
+    let suma = 0;
+    for (nota of notas) {
+        suma += nota;
+    }
+    return (suma / notas.length).toFixed(2);
+}
+
+let notas = [5.6, 3.2, 7.8, 5, 9.9, 4.99];
+
+console.log(`For con CONTADOR: `);
+console.log(forCont(notas));
+
+console.log(`For con IN: `);
+console.log(forIn(notas));
+
+console.log(`For con OF: `);
+console.log(forOf(notas));
+
+</script>
