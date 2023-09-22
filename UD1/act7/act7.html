@@ -1,0 +1,31 @@
+<script>
+/*
+    ACTIVIDAD 7: 📂 UD1/act7/act7.html
+    El factorial de un número entero n es una operación matemática que consiste en multiplicar ese número por todos los enteros menores que él: n x (n-1) x (n-2) x ... x 1.
+    Así, el factorial de 5 (se escribe 5!) vale: 5! = 5 x 4 x 3 x 2 x 1 = 120.
+    Haz un script que calcule el factorial de un número entero.
+*/
+
+// function factorial(num) {
+// let factorial = function(num) {
+let factorial = (num) => {
+    let factorial = num;
+
+    // Ej. contador incremental
+    // for (let i = 1; i < num; i++) {
+    //     factorial *= num-i;
+    //     console.info(`Contador: ${i} - factorial ${factorial}`);
+    // }
+
+    // Ej. contador decrementando
+    for (let i=num-1; i>0; i--) {
+        factorial *= i;
+        console.info(`Contador: ${i} - factorial ${factorial}`);
+    }
+
+    return factorial;
+};
+
+console.log(factorial(5));
+
+</script>
