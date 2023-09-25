@@ -6,9 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 style="margin: 0 auto; width: 500px;"><marquee><span style="font-size: 100px;">🐘 🦒 🐄 🐐 🦆 🐧 🦔</span></marquee> El fantástico juego de los números</h1>
+    <!-- <h1 style="margin: 0 auto; width: 500px;"><marquee><span style="font-size: 100px;">🐘 🦒 🐄 🐐 🦆 🐧 🦔</span></marquee> El fantástico juego de los números</h1> -->
     <div id="prueba"></div>
     <script>
+        let juego = (min=1, max=10) => {
+            const secreto = Math.random() * max + min;
+        }
         let acierto = false;
         let secreto = Math.floor(Math.random() * 10) + 1;
         while(!acierto) {

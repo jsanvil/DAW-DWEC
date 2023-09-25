@@ -1,0 +1,64 @@
+<script>
+'use strict'
+/*
+    ACTIVIDAD 10: 📂 UD1/act10/act10.html
+
+    Crea un objeto llamado inventario con las propiedades:
+
+        nombre = TV Samsung 42
+        categoria = Televisores
+        unidades = 4
+        precio = 345.95
+        importe devuelve el valor total de las unidades (nº de unidades * precio).
+
+    Introduce 2 productos más en el objeto inventario y comprueba que funciona correctamente.
+*/
+
+let importe = function() {
+    return this.unidades * this.precio;
+};
+
+let inventario = [
+    {
+        nombre: 'TV Samsung 42',
+        categoria: 'Televisores',
+        unidades: 4,
+        precio: 345.95,
+        importe
+    },
+    {
+        nombre: 'Sony Playstation 5',
+        categoria: 'Consolas',
+        unidades: 2,
+        precio: 545.95,
+        importe
+    },
+    {
+        nombre: 'Suich 2',
+        categoria: 'Consolas',
+        unidades: 199,
+        precio: 40.54,
+        importe
+    }
+];
+
+const printItem = (item) => {
+    for (let propiedad in item) {
+        if ( typeof item[propiedad] !== 'function' ) {
+            console.log(item[propiedad]);
+        }
+        else {
+            console.log(item[propiedad]());
+        }
+    }
+}
+
+const printInventario = (inventario) => {
+    for (let item of inventario) {
+        printItem(item);
+    }
+}
+
+printInventario(inventario);
+
+</script>
