@@ -1,0 +1,18 @@
+<script>
+/*
+  ACTIVIDAD 12: 📂 UD1/act12/act12.html
+  Haz una función que ordene las notas de un array pasado como parámetro.
+  Si le pasamos [4,8,3,10,5] debe devolver [3,4,5,8,10].
+  Pruébalo en la consola.
+*/
+
+let ordena = (array) => array.sort(function(item1, item2) {
+    return item1 - item2;
+});
+
+let prueba = [4,8,3,10,5];
+
+console.log(prueba);
+console.log(ordena(prueba));
+
+</script>
