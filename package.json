@@ -1,0 +1,26 @@
+{
+  "name": "daw-dwec",
+  "version": "1.0.0",
+  "description": "2DAW IES Serpis 2023",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsanvil/DAW-DWEC.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsanvil/DAW-DWEC/issues"
+  },
+  "homepage": "https://github.com/jsanvil/DAW-DWEC#readme",
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.1.0",
+    "eslint-plugin-promise": "^6.1.1"
+  }
+}
