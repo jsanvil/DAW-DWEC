@@ -1,0 +1,66 @@
+<script>
+'use strict'
+/*
+    ACTIVIDAD 13: 📂 UD1/act13/act13.html
+
+    Dado el siguiente array de objetos:
+
+    alumnado = [
+    { nombre: "Sara", edad: 19 },
+    { nombre: "Pepe", edad: 61 },
+    { nombre: "Lara", edad: 24 },
+    { nombre: "Álex", edad: 17 },
+    { nombre: "Inés", edad: 31 }
+    ];
+
+    Crea dos funciones:
+
+        ordenaEdad() que ordene por edad de mayor a menor.
+        ordenaNombre() que ordene por nombre.
+
+    ¿Qué ocurre si algún elemento del array no es un objeto? por ejemplo, alumnado.push("Fran")
+
+    Captura los posibles errores.
+*/
+
+let alumnado = [
+    { nombre: "Sara", edad: 19 },
+    { nombre: "Pepe", edad: 61 },
+    { nombre: "Lara", edad: 24 },
+    { nombre: "Álex", edad: 17 },
+    { nombre: "Inés", edad: 31 }
+];
+
+// ordena por edad de mayor a menor
+let ordenaEdad = (array) => {
+    let ordenado = array.slice(); // copia del array original
+    return ordenado.sort( (alum1, alum2) => alum2.edad - alum1.edad )
+}
+
+/* alternativa usando function en lugar de arrow */
+/*
+function ordenaEdad(array) {
+    return array.sort( function (alum1, alum2) {
+        return alum2.edad - alum1.edad;
+    });
+}
+*/
+
+// ordena por nombre.
+let ordenaNombre = (array) => {
+    let ordenado = array.slice();
+    return ordenado.sort( (alum1, alum2) => alum1.nombre.localeCompare(alum2.nombre) )
+}
+
+console.log( ordenaEdad(alumnado) );
+console.log( ordenaNombre(alumnado) );
+
+console.log("insertamos elemnto inválido")
+alumnado.unshift("Fran");
+console.log( alumnado );
+
+console.log("'ordenaEdad' con elemnto inválido ")
+console.log( ordenaEdad(alumnado) );
+console.log("'ordenaNombre' con elemnto inválido ")
+console.log( ordenaNombre(alumnado) );
+</script>
