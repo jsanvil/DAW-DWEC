@@ -1,0 +1,25 @@
+<script>
+/*
+    ACTIVIDAD 17: 📂 UD1/funcional/act17.html
+
+    Dado un array con los días de la semana indica si algún día empieza por 'S'.
+    Dado un array con los días de la semana indica si todos los días acaban por 's'
+*/
+
+const dias = [
+    'Lunes',
+    'Martes',
+    'Miércoles',
+    'Jueves',
+    'Viernes',
+    'Sábado',
+    'Domingo'
+];
+
+let hayDiasQueEmpiezanCon_S = dias.some( (dia) => dia.startsWith('S') )
+console.log(hayDiasQueEmpiezanCon_S);
+
+let todosLosDiasAcabanCon_s = dias.every( (dia) => dia.endsWith('s') )
+console.log(todosLosDiasAcabanCon_s);
+
+</script>
