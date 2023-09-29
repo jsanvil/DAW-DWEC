@@ -1,0 +1,38 @@
+<script>
+/*
+ACTIVIDAD 21: 📂 UD1/funcional/act21.html
+    - Dado el array arr1 con los días de la semana,
+      haz un array arr2 que sea igual al arr1.
+    - Elimina de arr2 el último día y comprueba quá ha pasado con arr1.
+    - Repite la operación con un array llamado arr3,
+      pero que crearás haciendo una copia de arr1.
+*/
+
+let arr1 = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
+console.log("arr1:")
+console.log(JSON.stringify(arr1))
+
+console.log('se crea una referencia de arr1 en arr2')
+
+let arr2 = arr1
+console.log('Eliminar el último item de arr2')
+arr2.pop()
+
+console.log("arr1:")
+console.log(arr1)
+console.log("arr2:")
+console.log(arr2)
+
+// creamos una copia de arr1
+let arr3 = Array.from(arr1)
+console.log('Modificamos arr3')
+arr3.push('Domingo')
+
+console.log("arr1:")
+console.log(arr1)
+console.log("arr2:")
+console.log(arr3)
+
+
+
+</script>
