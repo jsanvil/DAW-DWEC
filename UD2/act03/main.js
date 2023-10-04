@@ -36,4 +36,4 @@ let selectedValue = label.querySelector('input:checked').value;
 console.log(selectedValue);
 
 // opcional: dar foco al primer input de tipo texto
-form.querySelector('input[type="text"]').focus()
+form.querySelector('input[type="text"]').focus();
