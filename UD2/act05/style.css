@@ -1,7 +1,28 @@
 table {
-    border: 1px solid black;
+    display: block;
+    float: left;
+    margin : 5px auto;
+    text-align: center;
+    border-spacing: 5px;
+    background-color: #777;
+    border-radius: 5px;
 }
 
 td {
-    border: 1px solid grey;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+ol {
+    float: left;
+}
+
+.red {
+    background-color: #ff9191;
+    scale: 1.2;
+}
+
+.grey {
+    background-color: #cccccc;
 }

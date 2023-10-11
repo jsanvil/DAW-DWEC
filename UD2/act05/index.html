@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UD2 Actividad 5</title>
-    <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
 </head>
+
 <body>
-    <input id="table_x" type="text"><br>
-    <input id="table_y" type="text"><br>
+    <input type="number" id="table_x" min="1" max="10" value="4">
+    <input type="number" id="table_y" min="1" max="10" value="4">
     <button id="generar" onclick="generarTabla()">Generar</button>
-    <button id="borrar" onclick="borrarTabla()">Borrar</button>
+    <button id="borrar" onclick="borrar()">Borrar</button>
+    <button id="seleccionar" onclick="seleccionaCelda()">Seleccionar</button>
     <div id="tabla"></div>
     <ol id="seleccion"></ol>
 </body>
+
 </html>
