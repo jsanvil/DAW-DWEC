@@ -1,0 +1,36 @@
+form {
+    border: 1px solid black;
+    padding: 10px;
+    width: 250px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    width: 200px;
+}
+
+label[for="terms"] {
+    display: inline;
+}
+
+.error {
+    color: red;
+}
+
+input[type="checkbox"] {
+    margin-left: 0;
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+input:invalid {
+    border: 1px solid red;
+    background-color: #fee7;
+}
+
+input:valid {
+    border: 1px solid green;
+}
