@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link rel="stylesheet" href="form.css">
     <script src="form.js" defer></script>
 </head>
+
 <body>
-<!--
+    <!--
     - Nombre de usuario: Requerido, entre 5 y 20 caracteres, sólo letras y números.
     - Contraseña: Requerido, entre 8 y 20 caracteres, al menos una letra mayúscula,
     una minúscula y un número.
@@ -18,55 +20,35 @@
     - Fecha de nacimiento: Debe ser una fecha válida.
     - Acepto las condiciones: Requerido, checkbox que debe estar marcado.
     - Enviar. Botón que envía el formulario si es válido. -->
-    
-    <form action="#" novalidate>
-        <div>
+
+    <div class="container">
+        <form action="#" novalidate>
             <label for="name">Nombre de usuario:</label>
-            <input
-                type="text"
-                id="name"
-                required
-                minlength="5"
-                maxlength="20"
-                pattern="^[a-zA-Z0-9]{5,20}$">
+            <input type="text" id="name" required minlength="5" maxlength="20" pattern="^[a-zA-Z0-9]{5,20}$">
             <span class="error"></span>
-        </div>
-        <div>
             <label for="password">Contraseña:</label>
             <input type="text" id="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
             <span class="error"></span>
-        </div>
-        <div>
             <label for="password-repeat">Repetir contraseña:</label>
             <input type="text" id="password-repeat" required>
             <span class="error"></span>
-        </div>
-        <div>
             <label for="email">E-mail:</label>
             <input type="email" id="email" required>
             <span class="error"></span>
-        </div>
-        <div>
             <label for="cp">Código postal:</label>
             <input type="text" id="cp" pattern="((0[1-9]|5[0-2])|[1-4][0-9])[0-9]{3}">
             <span class="error"></span>
-        </div>
-        <div>
             <label for="birthday">Fecha de nacimiento:</label>
             <input type="date" id="birthday">
             <span class="error"></span>
-        </div>
-        <div>
             <input type="checkbox" id="terms" required>
             <label for="terms">Acepto las condiciones</label>
             <span class="error"></span>
-        </div>
-        <div>
-            <input type="submit">
-            <input type="reset" value="Reset">
-        </div>
-
-    </form>
+            <button type="submit">Enviar</button>
+            <button type="reset">Limpiar</button>
+        </form>
+    </div>
 
 </body>
+
 </html>

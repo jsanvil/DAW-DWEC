@@ -1,29 +1,61 @@
+:root {
+    --p-10: 10px;
+    --p-5: 5px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.container {
+    background-color: lightgray;
+    padding: var(--p-10);
+}
+
 form {
-    border: 1px solid black;
-    padding: 10px;
-    width: 250px;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: max-content 300px 100px;
+    row-gap: 5px;
+    column-gap: 10px;
 }
 
 label {
-    display: block;
-    width: 200px;
+    grid-column: 1 / 2;
+    justify-self: end;
 }
 
-label[for="terms"] {
-    display: inline;
+input {
+    grid-column: 2 / 4;
 }
 
-.error {
-    color: red;
+span.error {
+    grid-column: 2 / 4;
+    justify-self: end;
+    background-color: antiquewhite;
 }
 
 input[type="checkbox"] {
-    margin-left: 0;
+    grid-column: 1 / 2;
+    justify-self: end;
 }
 
-form div {
-    margin-bottom: 10px;
+label[for="terms"] {
+    grid-column: 2 / 3;
+    justify-self: start;
+}
+
+button[type="submit"],
+button[type="reset"] {
+    grid-column: 3 / 4;
 }
 
 input:invalid {
@@ -33,4 +65,15 @@ input:invalid {
 
 input:valid {
     border: 1px solid green;
+}
+
+.error {
+    color: red;
+}
+
+@media screen and (max-width: 700px) {
+    form {
+        display: flex;
+        flex-direction: column;
+    }
 }
