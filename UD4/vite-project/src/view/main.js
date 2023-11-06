@@ -3,6 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 let itemList = []
 
+const storageKey = 'groceriesApp'
+
+const json = window.localStorage.getItem(storageKey)
+
+itemList = JSON.parse(json)
+renderItemList()
+
 const form = document.getElementById('itemForm')
 
 form.addEventListener('submit', (e) => {
@@ -18,6 +25,7 @@ function createItem(value) {
   const newItem = new Item(value)
   itemList.push(newItem)
   renderItemList()
+  window.localStorage.setItem(storageKey, JSON.stringify(itemList))
 }
 
 function renderItemList() {
