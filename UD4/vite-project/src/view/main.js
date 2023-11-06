@@ -1,4 +1,5 @@
 import Item from '../model/Item.class'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 let itemList = []
 
@@ -30,8 +31,10 @@ function renderItemList() {
 function getRenderedItem(item) {
   const div = document.createElement('div')
   div.innerHTML = `
-    <h2 class="item">${item.name}</h2>
+  <div class="card">
+    <h2>${item.name}</h2>
     <p>${item.price}<p>
+  </div>
   `
   return div
 }
