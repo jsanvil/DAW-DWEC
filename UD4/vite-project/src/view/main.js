@@ -7,7 +7,7 @@ const storageKey = 'groceriesApp'
 
 const json = window.localStorage.getItem(storageKey)
 
-itemList = JSON.parse(json)
+itemList = json ? JSON.parse(json) : []
 renderItemList()
 
 const form = document.getElementById('itemForm')
