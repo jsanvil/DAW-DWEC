@@ -1,22 +1,40 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="container" class="container">
-      <h1>Lista de la compra</h1>
-      <form action="#" id="itemForm">
-        <input type="text" name="itemName" id="itemName">
-        <button id="btnAdd">Añadir</button>
-      </form>
-      <div id="itemList" class="d-flex flex-column gap-2">
 
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon"
+        type="image/svg+xml"
+        href="/vite.svg" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+</head>
+
+<body>
+  <div id="container"
+       class="container d-flex flex-column gap-3">
+    <h1>Lista de la compra</h1>
+    <form action="#"
+          id="itemForm"
+          class="form-control">
+      <div>
+        <label for="itemName"
+               class="form-label">Introduce un nuevo producto:</label>
       </div>
-    </div>
-    <script type="module" src="src/view/main.js"></script>
-  </body>
+      <input type="text"
+             name="itemName"
+             id="itemName">
+      <button id="btnAdd"
+              class="btn btn-primary">Añadir</button>
+    </form>
+    <ul id="itemList"
+        class="list-group">
+
+    </ul>
+  </div>
+  <script type="module"
+          src="src/view/main.js"></script>
+</body>
+
 </html>

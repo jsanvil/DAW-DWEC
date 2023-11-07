@@ -1,48 +1,83 @@
+import ItemList from '../model/ItemList.class'
 import Item from '../model/Item.class'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-let itemList = []
-
 const storageKey = 'groceriesApp'
+let items = []
 
-const json = window.localStorage.getItem(storageKey)
+async function loadItems() {
+  return new Promise((resolve, reject) => {
+    const data = window.localStorage.getItem(storageKey)
+    if (!data) {
+      items = new ItemList()
+      resolve()
+    } else {
+      items = new ItemList(JSON.parse(data))
+      resolve()
+    }
+  })
+}
 
-itemList = json ? JSON.parse(json) : []
-renderItemList()
+async function saveItems() {
+  return new Promise((resolve, reject) => {
+    try {
+      window.localStorage.setItem(storageKey, JSON.stringify(items.get()))
+      resolve()
+    } catch (err) {
+      reject(err)
+    }
+  })
+}
 
-const form = document.getElementById('itemForm')
+function init() {
+  const form = document.getElementById('itemForm')
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault()
-  console.log('onSubmit')
-  const input = document.getElementById('itemName')
-  if (!input.value) return
-  createItem(input.value)
-  input.value = ''
-})
+  form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const input = document.getElementById('itemName')
+    if (!input.value) return
+    createItem(input.value)
+    input.value = ''
+  })
+  loadItems()
+    .then(() => {
+      renderItemList()
+    })
+}
+
+window.onload = init
 
 function createItem(value) {
   const newItem = new Item(value)
-  itemList.push(newItem)
+  items.add(newItem)
   renderItemList()
-  window.localStorage.setItem(storageKey, JSON.stringify(itemList))
+  saveItems()
+}
+
+function deleteItem(item) {
+  items.remove(item)
+  renderItemList()
+  saveItems()
 }
 
 function renderItemList() {
   const divList = document.getElementById('itemList')
   divList.innerHTML = ''
-  itemList.forEach(item => {
-    divList.appendChild(getRenderedItem(item))
+  items.get().forEach(item => {
+    const itemElement = getRenderedItem(item)
+    divList.appendChild(itemElement)
+    itemElement.querySelector('button')
+      .addEventListener('click', () => {
+        deleteItem(item)
+      })
   })
 }
 
 function getRenderedItem(item) {
-  const div = document.createElement('div')
-  div.innerHTML = `
-  <div class="card">
-    <h2>${item.name}</h2>
-    <p>${item.price}<p>
-  </div>
+  const element = document.createElement('li')
+  element.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center')
+  element.innerHTML = `
+    ${item} <button class="btn btn-danger">X</button>
   `
-  return div
+  return element
 }
