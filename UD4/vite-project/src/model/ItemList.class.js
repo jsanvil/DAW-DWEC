@@ -64,7 +64,7 @@ export default class ItemList {
    * @param {Item} item
    */
   remove (item) {
-    this._list = this.list.filter((i) => i !== item)
+    this._list = this._list.filter((i) => i !== item)
   }
 
   /**
@@ -135,6 +135,6 @@ export default class ItemList {
    * Devuelve la lista de items en formato de texto JSON
    */
   toString = () => {
-    return JSON.stringify(this.list)
+    return JSON.stringify(this._list)
   }
 }

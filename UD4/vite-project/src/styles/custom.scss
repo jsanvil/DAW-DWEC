@@ -12,7 +12,6 @@ $dark: #111;
 
 @import "bootstrap/scss/bootstrap";
 
-
 $theme-colors: (
   "primary": $primary,
   "secondary": $secondary,
@@ -20,8 +19,8 @@ $theme-colors: (
   "success": $success,
   "info": $info,
   "warning": $warning,
-  "light": $light,
-  "dark": $dark
+  // "light": $light,
+  // "dark": $dark
 );
 
 // LAYOUT

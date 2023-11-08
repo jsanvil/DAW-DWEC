@@ -261,3 +261,8 @@ function formatFilteredName (name) {
   return name
     .replace(new RegExp(`(${filterName.value})`, 'gi'), '<em>$1</em>')
 }
+
+document.getElementById('theme-switch').addEventListener('change', (e) => {
+  const isChecked = e.target.checked
+  document.documentElement.setAttribute('data-bs-theme', isChecked ? 'dark' : 'light')
+})
