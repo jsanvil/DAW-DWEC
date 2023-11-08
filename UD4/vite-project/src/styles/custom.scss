@@ -76,42 +76,48 @@ $theme-colors: (
       width: auto;
     }
 
-    .filter-search {
+    .filter-search {}
 
-    }
+    .filter-completed {
+      transition: background-color 0.3s ease-in-out;
 
-    .filter-completed label {
-      display: grid;
-      grid-template-columns: auto auto;
-    }
-
-    .icon-hidden {
-      display: none;
-    }
-
-    #filter-hide-completed {
-      display: none;
-
-      ~ label {
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-
-        &:hover {
-          color: $primary;
-        }
+      &:hover {
+        background-color: $light;
       }
 
-      &:checked ~ label {
-        color: $info;
-
-        .icon-visible {
-          display: none;
-        }
-        .icon-hidden {
-          display: inline;
-        }
+      label {
+        display: grid;
+        grid-template-columns: auto auto;
       }
 
+      #filter-hide-completed {
+        display: none;
+
+        ~ label {
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+
+          .icon-hidden {
+            display: none;
+          }
+
+          &:hover {
+            color: $primary;
+          }
+        }
+
+        &:checked ~ label {
+          color: $info;
+
+          .icon-visible {
+            display: none;
+          }
+
+          .icon-hidden {
+            display: inline;
+          }
+        }
+      }
     }
   }
 
