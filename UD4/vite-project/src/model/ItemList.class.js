@@ -32,9 +32,9 @@ export default class ItemList {
   constructor (list = []) {
     this._list = []
     list.forEach((obj) => {
-      const item = new Item(obj.name, obj.id)
-      item.quantity = obj.quantity
-      item.status = obj.status
+      const item = new Item(obj._name, obj._id)
+      item.quantity = obj._quantity
+      item.status = obj._status
       this._list.push(item)
     })
   }
