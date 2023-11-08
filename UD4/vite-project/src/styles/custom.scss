@@ -19,8 +19,8 @@ $theme-colors: (
   "success": $success,
   "info": $info,
   "warning": $warning,
-  // "light": $light,
-  // "dark": $dark
+  "light": $light,
+  "dark": $dark
 );
 
 // LAYOUT
@@ -53,12 +53,12 @@ $theme-colors: (
       transition: border-color 0.3s ease-in-out;
 
       &::placeholder {
-        color: $primary;
+        // color: $primary;
       }
 
       &:focus {
         outline: none;
-        border-color: $primary;
+        // border-color: $primary;
       }
     }
   }
@@ -81,7 +81,7 @@ $theme-colors: (
       transition: background-color 0.3s ease-in-out;
 
       &:hover {
-        background-color: $light;
+        // background-color: $light;
       }
 
       label {
@@ -101,12 +101,12 @@ $theme-colors: (
           }
 
           &:hover {
-            color: $primary;
+            // color: $primary;
           }
         }
 
         &:checked ~ label {
-          color: $info;
+          // color: $info;
 
           .icon-visible {
             display: none;
@@ -132,13 +132,13 @@ $theme-colors: (
     transition: background-color 0.3s ease-in-out;
 
     &:hover {
-      background-color: $light;
+      // background-color: $light;
     }
 
     input:checked ~ label {
       text-decoration: line-through;
       font-style: italic;
-      color: $dark;
+      // color: $dark;
     }
 
     label {
