@@ -263,6 +263,6 @@ function formatFilteredName (name) {
 }
 
 document.getElementById('theme-switch').addEventListener('change', (e) => {
-  const isChecked = e.target.checked
-  document.documentElement.setAttribute('data-bs-theme', isChecked ? 'dark' : 'light')
+  const isDark = e.target.checked
+  document.documentElement.setAttribute('data-bs-theme', isDark ? 'dark' : 'light')
 })
