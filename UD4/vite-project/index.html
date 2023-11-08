@@ -1,40 +1,88 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8" />
   <link rel="icon"
         type="image/svg+xml"
-        href="/vite.svg" />
+        href="/bag-check-fill.svg" />
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
-  <title>Vite App</title>
+  <title>2DAW DWEC - Vite - Lista de la compra</title>
+  <script type="module"
+          src="src/view/main.js"></script>
 </head>
 
 <body>
-  <div id="container"
-       class="container d-flex flex-column gap-3">
-    <h1>Lista de la compra</h1>
-    <form action="#"
-          id="itemForm"
-          class="form-control">
-      <div>
-        <label for="itemName"
-               class="form-label">Introduce un nuevo producto:</label>
-      </div>
-      <input type="text"
-             name="itemName"
-             id="itemName">
-      <button id="btnAdd"
-              class="btn btn-primary">Añadir</button>
-    </form>
-    <ul id="itemList"
-        class="list-group">
+  <div id="app">
 
-    </ul>
+    <!-- HEADER -->
+
+    <div id="app-header">
+      <h1 class="display-5 text-primary"><em><i class="bi bi-bag-check-fill"></i> Lista de la compra</em></h1>
+    </div>
+
+    <!-- INPUT FORM -->
+
+    <div id="app-item-input"
+         class="container">
+      <form action="#"
+            id="itemForm">
+        <div class="d-flex gap-2 align-items-center">
+          <div class="input-group">
+            <span class="input-group-text text-primary"><i class="bi bi-pencil-square"></i></span>
+            <input type="text"
+                   id="itemName"
+                   name="itemName"
+                   autocomplete="off"
+                   class="form-control"
+                   placeholder="producto...">
+          </div>
+          <button id="btnAdd"
+                  title="Añadir producto"
+                  class="btn btn-primary"><i class="bi bi-bag-plus-fill"></i></button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ITEM LIST -->
+
+    <div id="app-list"
+         class="container d-flex flex-column gap-3">
+      <ul id="grocery-list"
+          class="list-group">
+      </ul>
+    </div>
+
+    <!-- FILTERS -->
+
+    <div id="app-filters"
+         class="container px-3 d-flex flex-row gap-3 align-items-center justify-content-end">
+      <span class="text-primary"><i class="bi bi-funnel-fill"></i></span>
+      <div class="filter-completed">
+        <input type="checkbox"
+               class="form-check-input"
+               id="filter-hide-completed">
+        <label for="filter-hide-completed"
+               class="form-check-label">
+          <i class="icon-visible bi-eye-fill"></i>
+          <i class="icon-hidden bi-eye-slash"></i>
+          <i class="bi bi-check"></i>
+        </label>
+      </div>
+      <div class="filter-search input-group input-group-sm">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+        <input id="filter-name"
+               type="text"
+               class="form-control"
+               placeholder="buscar...">
+      </div>
+      <button id="filter-clear"
+              title="Limpiar filtros"
+              class="btn btn-sm btn-outline-secondary"><i class="bi bi-trash-fill"></i></button>
+    </div>
   </div>
-  <script type="module"
-          src="src/view/main.js"></script>
+
 </body>
 
 </html>

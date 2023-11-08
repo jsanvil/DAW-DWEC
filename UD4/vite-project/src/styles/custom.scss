@@ -1,0 +1,168 @@
+@use 'sass:color';
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+$primary: #55a;
+$secondary: #555;
+$danger: #a55;
+$success: #5a5;
+$info: #5aa;
+$warning: #ea5;
+$light: #eee;
+$dark: #111;
+
+@import "bootstrap/scss/bootstrap";
+
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "danger": $danger,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "light": $light,
+  "dark": $dark
+);
+
+// LAYOUT
+
+#app {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  max-width: 800px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #app-header {
+    grid-area: header;
+    order: 0;
+  }
+
+  #app-item-input {
+    grid-area: input;
+    order: 1;
+
+    input[type="text"] {
+      transition: border-color 0.3s ease-in-out;
+
+      &::placeholder {
+        color: $primary;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $primary;
+      }
+    }
+  }
+
+  input[type="text"]::placeholder {
+    font-style: italic;
+    opacity: 0.5;
+  }
+
+  #app-filters {
+    order: 2;
+
+    .input-group {
+      width: auto;
+    }
+
+    .filter-search {
+
+    }
+
+    .filter-completed label {
+      display: grid;
+      grid-template-columns: auto auto;
+    }
+
+    .icon-hidden {
+      display: none;
+    }
+
+    #filter-hide-completed {
+      display: none;
+
+      ~ label {
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+
+      &:checked ~ label {
+        color: $info;
+
+        .icon-visible {
+          display: none;
+        }
+        .icon-hidden {
+          display: inline;
+        }
+      }
+
+    }
+  }
+
+  #app-list {
+    order: 3;
+  }
+}
+
+#grocery-list {
+
+  li {
+    user-select: none;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $light;
+    }
+
+    input:checked ~ label {
+      text-decoration: line-through;
+      font-style: italic;
+      color: $dark;
+    }
+
+    label {
+      cursor: pointer;
+
+      em {
+        font-style: italic;
+        font-weight: bold;
+        background-color: lighten($warning, 25);
+        border-radius: 5px;
+      }
+    }
+
+    button {
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+      &.edit {
+        &:hover {
+          background-color: $primary;
+          color: $white;
+        }
+      }
+
+      &.delete {
+        &:hover {
+          background-color: $danger;
+          color: $white;
+        }
+      }
+    }
+  }
+}

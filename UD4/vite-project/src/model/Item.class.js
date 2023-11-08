@@ -1,39 +1,70 @@
+/**
+ * Clase que representa un item
+ */
 export default class Item {
-  constructor (name = '', quantity = 1, price = 0) {
+  /**
+   * Item id
+   * @type {number}
+   */
+  _id = null
+
+  /**
+   * Item name
+   * @type {string}
+   */
+  _name = ''
+
+  /**
+   * Item quantity
+   * @type {number}
+   */
+  _quantity = 1
+
+  /**
+   * Item status
+   * @type {boolean}
+   */
+  _status = false
+
+  /**
+   * Crea un nuevo item
+   * @param {string} name
+   * @param {number} [id=null]
+   */
+  constructor (name, id = null) {
+    this._id = id || Date.now()
     this._name = name
-    this._quantity = quantity
-    this._price = price
   }
 
-  toString () {
-    return `${this.name} - ${this.price}€`
+  get id () {
+    return this._id
   }
 
   get name () {
     return this._name
   }
 
-  set name (value) {
-    this._name = value
+  set name (name) {
+    this._name = name
   }
 
   get quantity () {
     return this._quantity
   }
 
-  set quantity (value) {
-    this._quantity = value
+  set quantity (quantity) {
+    this._quantity = quantity
   }
 
-  get price () {
-    return this._price
+  get status () {
+    return this._status
   }
 
-  set price (value) {
-    this._price = value
+  set status (status) {
+    this._status = status
   }
 
-  get total () {
-    return this.price * this.quantity
+  toString () {
+    return `${this.name}`
   }
 }
