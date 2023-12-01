@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    
+    <h2>Botones</h2>
+    <div>
+        <md-elevated-button>md-elevated-button</md-elevated-button>
+        <md-filled-button>md-filled-button</md-filled-button>
+        <md-filled-tonal-button>md-filled-tonal-button</md-filled-tonal-button>
+        <md-outlined-button>md-outlined-button</md-outlined-button>
+        <md-text-button>md-text-button</md-text-button>
+    </div>
+
+    <h2>Diálogo</h2>
+    <div>
+        <md-elevated-button id="open-dialog">Mostrar diálogo</md-elevated-button>
+    </div>
+
+    <md-dialog id="dialog">
+        <div slot="headline">
+            Mi primer md-dialog
+            <md-circular-progress indeterminate></md-circular-progress>
+        </div>
+        <form slot="content" id="form-id" method="dialog">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Quisquam, voluptatum. Quisquam,
+        </form>
+        <div slot="actions">
+            <md-text-button form="form-id">Cerrar</md-text-button>
+        </div>
+    </md-dialog>
+
+
+    <div>
+      <md-chip-set>
+        <md-assist-chip label="Assist"></md-assist-chip>
+        <md-filter-chip label="Filter"></md-filter-chip>
+        <md-input-chip label="Input"></md-input-chip>
+        <md-suggestion-chip label="Suggestion"></md-suggestion-chip>
+      </md-chip-set>
+    </div>
+
+
+
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
