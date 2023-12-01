@@ -23,6 +23,17 @@ $theme-colors: (
   "dark": $dark
 );
 
+@include color-mode(dark) {
+  $primary: #fff;
+  $secondary: #555;
+  $danger: #a55;
+  $success: #5a5;
+  $info: #5aa;
+  $warning: #ea5;
+  $light: #eee;
+  $dark: color-contrast(#111);
+}
+
 // LAYOUT
 
 #app {
