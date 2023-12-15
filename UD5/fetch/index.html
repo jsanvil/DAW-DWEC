@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REST Client</title>
+  <script type="module" src="main.js"></script>
+</head>
+
+<body>
+
+  <h1>Mostrar posts de un usuario</h1>
+
+  <!-- FORMULARIO para introducir el id del usuario -->
+
+  <form id="form-user-posts">
+    <div>
+      <label for="user-id">Introduce el id del usuario: </label>
+      <input type="text" id="user-id" name="userId" size="2">
+      <span id="error-message" class="error"></span>
+    </div>
+    <button type="submit">Mostrar posts</button>
+  </form>
+
+  <!-- TABLA para mostrar los posts -->
+
+  <div id="user-posts">
+    <table>
+      <thead>
+        <tr><th>userId</th><th>Id</th><th>Título</th><th>Post</th></tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se añadirán los posts -->
+      </tbody>
+    </table>
+    <p>Total: <span id="num-posts"><!-- Aquí se mostrará el total --></span></p>
+  </div>
+
+</body>
+</html>

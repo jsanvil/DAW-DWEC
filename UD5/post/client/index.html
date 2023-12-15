@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear usuario con POST</title>
+  <script type="module" src="main.js"></script>
+</head>
+
+<body>
+
+  <h1>Crear usuario con POST</h1>
+
+  <!-- FORMULARIO para introducir los datos del usuario -->
+
+  <form id="create-user">
+    <div>
+      <label for="name">Nombre: </label>
+      <input type="text"
+             name="name"
+             id="name" required>
+    </div>
+    <div>
+      <label for="email">Email: </label>
+      <input type="text"
+             name="email"
+             id="email"
+             required>
+    </div>
+
+    <input type="submit" value="Añadir usuario">
+  </form>
+
+  <div id="users">
+    <!-- Aquí se mostrará la lista de usuarios -->
+  </div>
+</body>
+</html>
