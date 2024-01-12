@@ -1,6 +1,23 @@
-const form = document.getElementById("create-user");
+const SERVER = 'http://localhost:3000/';
+const USERS_PATH = 'users/';
 
-form.addEventListener("submit", (event) => {
+const USERS_ROUTE = SERVER + USERS_PATH;
+
+const USERS_SEARCH_NAME_LIKE = 'name_like';
+
+const createForm = document.getElementById("create-user");
+const searchForm = document.getElementById("search-user");
+const deleteForm = document.getElementById("delete-user");
+
+const loader = document.querySelector('.loader');
+
+function toggleLoader(show) {
+  loader.style.display = show ? 'inline-block' : 'none';
+}
+
+toggleLoader(false)
+
+createForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const userData = {
@@ -11,8 +28,67 @@ form.addEventListener("submit", (event) => {
   createUser(userData);
 });
 
+// ================= SEARCH =================
+
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const searchParam = document.getElementById("search-name").value;
+  
+  toggleLoader(true)
+  fetch(`${USERS_ROUTE}?name_like=${searchParam}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw "Error al buscar " + searchParam;
+        return;
+      }
+      return response.json();
+    })
+    .then((data) => {
+      document.getElementById("users").innerHTML = "<h2>Users</h2>";
+      data.reverse().forEach((user) => {
+        document.getElementById("users").innerHTML += `
+            <div id="user-${user.id}" class="user">http://localhost:3000/
+            <span>id: ${user.id}</span> -
+            <span class="user-name">name: ${user.name}</span> -
+            <span class="user-email">email: ${user.email}</span>
+          </div>
+          <hr>
+            `;
+      });
+    })
+    .finally(() => toggleLoader(false));
+});
+
+// ================= DELETE =================
+
+deleteForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const deleteID = document.getElementById("delete-id").value;
+
+  toggleLoader(true)
+  fetch(`${USERS_ROUTE}${deleteID}`, { method: "DELETE" })
+    .then((response) => {
+      if (!response.ok) {
+        throw "Error al borar el usuario con ID: " + deleteID;
+      }
+      return response.json();
+    })
+    .then((data) => {
+      render(data);
+    })
+    .catch((e) => {
+      console.log(e);
+    })
+    .finally(() => toggleLoader(false));
+});
+
+// ================= CREATE =================
+
 function createUser(userData) {
-  fetch("http://localhost:3000/users", {
+  toggleLoader(true)
+  fetch(`${USERS_ROUTE}`, {
     // Tipo de petición
     method: "POST",
     // Convertir el objeto a una cadena de texto JSON para enviarlo en el cuerpo de la petición
@@ -29,26 +105,34 @@ function createUser(userData) {
     })
     .catch((error) => {
       console.error("Error:", error);
-    });
+    })
+    .finally(() => toggleLoader(false));
 }
 
 getUsers();
 
-// obtiene y presenta la lista de usuarios
+// ================= GET USERS =================
+
 function getUsers() {
+  toggleLoader(true)
   fetch("http://localhost:3000/users")
     .then((response) => response.json())
     .then((data) => {
-      document.getElementById("users").innerHTML = "<h2>Users</h2>";
-      data.reverse().forEach((user) => {
-        document.getElementById("users").innerHTML += `
+      render(data);
+    })
+    .finally(() => toggleLoader(false));
+}
+
+function render(userList) {
+  document.getElementById("users").innerHTML = "<h2>Users</h2>";
+  userList.reverse().forEach((user) => {
+    document.getElementById("users").innerHTML += `
         <div id="user-${user.id}" class="user">
         <span>id: ${user.id}</span> -
         <span class="user-name">name: ${user.name}</span> -
         <span class="user-email">email: ${user.email}</span>
       </div>
       <hr>
-        `;
-      });
-    });
+    `;
+  });
 }

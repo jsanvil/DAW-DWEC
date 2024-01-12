@@ -1,0 +1,71 @@
+<div class="container row">
+
+  <div class="card col">
+    <div class="card-header bg-primary text-white">
+      {{title}}
+    </div>
+    <div class="card-block">
+
+      @if(products && products.length) {
+
+      <form class="form p-3 border-bottom">
+        <div class="form-group row">
+          <label class="col-form-label col-sm-2 text-sm-end"
+                 for="filterDesc">Filtro:</label>
+          <div class="col-sm-5">
+            <input type="text"
+                   [(ngModel)]="filterSearch"
+                   class="form-control"
+                   name="filterDesc"
+                   id="filterDesc"
+                   placeholder="filtro...">
+          </div>
+          <label class="col-form-label col-sm-5">
+            Filtrando por: {{filterSearch}}</label>
+        </div>
+      </form>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <button class="btn btn-sm"
+                      [ngClass]="{'btn-danger': showImage, 'btn-primary': !showImage}"
+                      (click)="toggleImage()">
+                {{showImage ? 'Ocultar' : 'Mostrar'}} {{headers.image}}
+              </button>
+              <th>{{headers.description}}</th>
+              <th>{{headers.price}}</th>
+              <th class="showCursor"
+                  (click)="sortByDate()">{{headers.available}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(product of products | productFilter:filterSearch; track product.id) {
+            <tr>
+              <td><img [src]="product.imageUrl"
+                     [ngClass]="{'d-none': !showImage}"
+                     alt=""
+                     [title]="product.description | lowercase"></td>
+              <td>{{product.description}}</td>
+              <td>{{product.price | currency:'EUR':'symbol'}}</td>
+              <td>{{product.available | date : 'dd/MM/y'}}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      }
+      @else {
+
+      <div class="alert alert-info">
+        No hay productos
+      </div>
+
+      }
+
+    </div>
+  </div>
+
+</div>

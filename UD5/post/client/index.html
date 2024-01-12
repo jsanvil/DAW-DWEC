@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
   <title>Crear usuario con POST</title>
-  <script type="module" src="main.js"></script>
+  <script type="module"
+          src="main.js"></script>
 </head>
 
 <body>
+  <style>
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 5px solid #FFF;
+      border-bottom-color: #FF3D00;
+      border-radius: 50%;
+      display: inline-block;
+      box-sizing: border-box;
+      animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 
   <h1>Crear usuario con POST</h1>
+
+  <span class="loader"></span>
 
   <!-- FORMULARIO para introducir los datos del usuario -->
 
@@ -18,7 +45,8 @@
       <label for="name">Nombre: </label>
       <input type="text"
              name="name"
-             id="name" required>
+             id="name"
+             required>
     </div>
     <div>
       <label for="email">Email: </label>
@@ -28,11 +56,46 @@
              required>
     </div>
 
-    <input type="submit" value="Añadir usuario">
+    <input type="submit"
+           value="Añadir usuario">
+  </form>
+
+  <hr>
+
+  <!-- SEARCH -->
+
+  <form id="search-user">
+    <div>
+      <label for="name">Nombre: </label>
+      <input type="text"
+             name="name"
+             id="search-name"
+             required>
+    </div>
+
+    <input type="submit"
+           value="Buscar usuario">
+  </form>
+
+  <hr>
+  <!-- DELETE -->
+
+  <form id="delete-user">
+    <div>
+      <label for="id">ID: </label>
+      <input type="text"
+             name="id"
+             id="delete-id"
+             required>
+    </div>
+
+    <input type="submit"
+           value="Borrar">
   </form>
 
   <div id="users">
     <!-- Aquí se mostrará la lista de usuarios -->
   </div>
 </body>
+
 </html>
