@@ -1,13 +1,13 @@
-<div class="container row">
-
-  <div class="card col">
-    <div class="card-header bg-primary text-white">
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-primary text-white display-6">
       {{title}}
     </div>
-    <div class="card-block">
 
+    <div class="card-block">
       @if(products && products.length) {
 
+      <!-- FILTRO -->
       <form class="form p-3 border-bottom">
         <div class="form-group row">
           <label class="col-form-label col-sm-2 text-sm-end"
@@ -25,11 +25,13 @@
         </div>
       </form>
 
+      <!-- TABLA -->
       <div class="table-responsive">
         <table class="table table-striped">
+          <!-- cabecera de la tabla -->
           <thead>
             <tr>
-              <button class="btn btn-sm"
+              <button class="btn btn-sm m-1"
                       [ngClass]="{'btn-danger': showImage, 'btn-primary': !showImage}"
                       (click)="toggleImage()">
                 {{showImage ? 'Ocultar' : 'Mostrar'}} {{headers.image}}
@@ -40,32 +42,35 @@
                   (click)="sortByDate()">{{headers.available}}</th>
             </tr>
           </thead>
+          <!-- contenido de la tabla -->
           <tbody>
             @for(product of products | productFilter:filterSearch; track product.id) {
-            <tr>
-              <td><img [src]="product.imageUrl"
-                     [ngClass]="{'d-none': !showImage}"
-                     alt=""
-                     [title]="product.description | lowercase"></td>
-              <td>{{product.description}}</td>
-              <td>{{product.price | currency:'EUR':'symbol'}}</td>
-              <td>{{product.available | date : 'dd/MM/y'}}</td>
-            </tr>
+            <tr app-product-item
+                [product]="product"
+                [showImage]="showImage"></tr>
             }
           </tbody>
         </table>
       </div>
-
       }
       @else {
-
+      <!-- mensaje en caso de no haber productos en el array s-->
       <div class="alert alert-info">
         No hay productos
       </div>
-
       }
+    </div><!-- card-block -->
+  </div><!-- card -->
+</div><!-- container -->
 
+<!-- NUEVO PRODUCTO -->
+<div class="container mt-2">
+  <div class="card">
+    <div class="card-header bg-info text-white display-6">
+      Nuevo producto
     </div>
-  </div>
-
-</div>
+    <div class="card-body">
+      <app-add-product (newProductEvent)="addProduct($event)" />
+    </div><!-- card-body -->
+  </div><!-- card -->
+</div><!-- row -->

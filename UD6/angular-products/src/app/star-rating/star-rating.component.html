@@ -1,0 +1,11 @@
+<div class="star-container" (mouseleave)="restoreRating()">
+  @for(star of [1,2,3,4,5]; track $index) {
+  <i [ngClass]="
+  {
+    'bi-star-fill': star <= auxRating,
+    'bi-star': star > auxRating
+  }"
+  (mouseenter)="auxRating = star"
+  (click)="setRating()"></i>
+  }
+</div>

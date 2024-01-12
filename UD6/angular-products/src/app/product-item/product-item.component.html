@@ -1,0 +1,10 @@
+<td><img [src]="product.imageUrl" alt=""
+            [ngClass]="{'d-none': !showImage}"
+            [title]="product.description | lowercase"></td>
+<td>{{product.description}}</td>
+<td>{{product.price | currency:'EUR':'symbol'}}</td>
+<td>{{product.available | date : 'dd/MM/y'}}</td>
+<td>
+       <app-star-rating [rating]="product.rating"
+                        (ratingChanged)="changeRating($event)" />
+</td>
