@@ -1,36 +1,42 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
+
 import { Product } from '../interfaces/product';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ProductService {
+  productsEndpoint = "products";
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getProducts(): Product[] {
-      return [{
-        id: 1,
-        description: 'WD BLACK SN770 2TB NVMe SSD',
-        available: '2023-10-03',
-        price: 115,
-        imageUrl: 'assets/ssd.jpg',
-        rating: 5
-      }, {
-        id: 2,
-        description: 'MSI MPG B550 GAMING PLUS ',
-        available: '2023-09-15',
-        price: 139.90,
-        imageUrl: 'assets/motherboard.png',
-        rating: 4
-      },
-      {
-        id: 3,
-        description: 'Kingston FURY Beast DDR4 3200 MHz 16GB 2x8GB CL16',
-        available: '2023-11-10',
-        price: 42.95,
-        imageUrl: 'assets/ram.png',
-        rating: 3
-      }];
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Array<Product>>(this.productsEndpoint)
+      .pipe(
+        catchError((resp: HttpErrorResponse) =>
+          throwError(() =>
+            new Error(`Error obteniendo productos. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
+        ));
   }
+
+  // actualiza el rating de un producto
+  // PATCH /products/:id { rating: number }
+  updateRating(id: number, rating: number): Observable<Product> {
+    return this.http.patch<Product>(`${this.productsEndpoint}/${id}`, { rating }).pipe(
+      catchError((resp: HttpErrorResponse) =>
+        throwError(() =>
+          new Error(`Error al actualizar rating. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
+      ));
+  }
+
+  // agrega un producto
+  // POST /products
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.productsEndpoint, product).pipe(
+      catchError((resp: HttpErrorResponse) =>
+        throwError(() =>
+          new Error(`Error crear producto. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
+      ));
+  }
+
 }

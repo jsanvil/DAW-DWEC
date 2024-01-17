@@ -7,6 +7,7 @@ import { ProductFilterPipe } from '../pipes/product-filter.pipe';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { ProductService } from '../services/product.service';
 import { AddProductComponent } from '../add-product/add-product.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-products-list',
@@ -35,11 +36,18 @@ export class ProductsListComponent implements OnInit {
   products: Product[] = [];
   showImage = true;
   filterSearch = '';
-  
+
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
+    this.productService.getProducts()
+      .subscribe(
+        {
+          next: responseProducts => this.products = responseProducts,
+          error: err => console.error(err),
+          complete: () => console.log('Productos obtenidos')
+        }
+      );
   }
 
   addProduct(product: Product) {

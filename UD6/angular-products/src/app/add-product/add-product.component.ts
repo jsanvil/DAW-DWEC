@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../interfaces/product';
 import { CommonModule } from '@angular/common';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-add-product',
@@ -14,7 +15,7 @@ export class AddProductComponent {
   @Output() newProductEvent = new EventEmitter<Product>();
 
   newProduct = {
-    id: Math.floor(Math.random() * 1000),
+    id: null!,
     description: '',
     available: '',
     price: 0,
@@ -22,18 +23,25 @@ export class AddProductComponent {
     rating: 0
   }
 
-  addProduct() {
-    this.newProductEvent.emit(this.newProduct);
+  constructor(private productService: ProductService) { }
 
-    // se limpia el formulario asignando un nuevo objeto con datos por defecto
-    this.newProduct = {
-      id: Math.floor(Math.random() * 1000000),
-      description: '',
-      available: '',
-      price: 0,
-      imageUrl: '',
-      rating: 0
-    }
+  addProduct() {
+    this.productService.addProduct(this.newProduct).subscribe({
+      next: response => {
+        this.newProductEvent.emit(this.newProduct);
+
+        // se limpia el formulario asignando un nuevo objeto con datos por defecto
+        this.newProduct = {
+          id: null!,
+          description: '',
+          available: '',
+          price: 0,
+          imageUrl: '',
+          rating: 0
+        }
+      },
+      error: error => console.error(error)
+    });
   }
 
   changeImage(fileInput: HTMLInputElement) {

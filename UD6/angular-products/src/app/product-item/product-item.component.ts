@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Product } from '../interfaces/product';
 import { CommonModule } from '@angular/common';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: '[app-product-item]',
@@ -16,8 +17,11 @@ export class ProductItemComponent {
   @Input() showImage!: boolean;
 
   changeRating(rating: number) {
-    this.product.rating = rating;
+    if (this.product.id) {
+      this.productService.updateRating(this.product.id, rating)
+        .subscribe(prod => this.product = prod);
+    }
   }
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 }
