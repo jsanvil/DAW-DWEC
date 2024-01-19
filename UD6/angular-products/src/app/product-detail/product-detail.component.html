@@ -1,0 +1,35 @@
+<div class="card">
+  @if(product) {
+  <div class="card-header bg-primary text-white">
+    {{ product!.description }}
+  </div>
+  <div class="card-block p-3 text-center">
+    <img [src]="product!.imageUrl"
+         alt=""
+         class="product-image">
+    <div>Precio: {{ product!.price | currency:'EUR':'symbol' }}</div>
+    <div>Disponible desde: {{ product!.available | date:'dd/MM/y' }}</div>
+    <div>
+      <app-star-rating [rating]="product!.rating"
+                       (ratingChanged)="changeRating($event)" />
+    </div>
+    <div class="mt-3">
+      <button type="button"
+              class="btn btn-primary"
+              (click)="goBack()">
+        Volver
+      </button>
+      <button type="button"
+              class="btn btn-success ms-3"
+              (click)="edit()">
+        Editar producto
+      </button>
+    </div>
+  </div>
+  }
+  @else {
+  <div class="card-header bg-primary text-white">
+    Cargando información del producto...
+  </div>
+  }
+</div>

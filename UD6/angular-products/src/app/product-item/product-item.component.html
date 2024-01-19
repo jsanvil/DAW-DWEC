@@ -1,7 +1,14 @@
-<td><img [src]="product.imageUrl" alt=""
+<td>
+       <img [src]="product.imageUrl"
+            alt=""
             [ngClass]="{'d-none': !showImage}"
-            [title]="product.description | lowercase"></td>
-<td>{{product.description}}</td>
+            [title]="product.description | lowercase">
+</td>
+<td>
+       <a [routerLink]="['/products', product.id]">
+              {{product.description}}
+       </a>
+</td>
 <td>{{product.price | currency:'EUR':'symbol'}}</td>
 <td>{{product.available | date : 'dd/MM/y'}}</td>
 <td>

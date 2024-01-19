@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-header bg-success text-white">
+    Editar producto
+  </div>
+  <div class="card-body">
+    @if(product) {
+    <form #productForm="ngForm" (ngSubmit)="saveChanges()">
+      <div class="mb-3 row">
+        <label class="col-md-2 col-form-label text-md-end">Descripción</label>
+        <div class="col-md-10">
+          <input type="text"
+                 class="form-control"
+                 name="description"
+                 [(ngModel)]="product!.description">
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label class="col-md-2 col-form-label text-md-end">Precio</label>
+        <div class="col-md-10">
+          <input type="number"
+                 class="form-control"
+                 name="price"
+                 [(ngModel)]="product!.price">
+        </div>
+      </div>
+      <div class=" mb-3 row">
+        <label class="col-md-2 col-form-label text-md-end">Disponible</label>
+        <div class="col-md-10">
+          <input type="date"
+                 class="form-control"
+                 name="available"
+                 [(ngModel)]="product!.available">
+        </div>
+      </div>
+      <div class="mb-3 roe">
+        <label for="image" class="form-label">Imagen</label>
+        <input type="file"
+               class="form-control"
+               name="image"
+               #fileImage
+               (change)="changeImage(fileImage)">
+      </div>
+      @if(product.imageUrl) {
+      <img [src]="product.imageUrl" alt="" class="product-image">
+      }
+      <div class="mb-3 row">
+        <div class="offset-md-2 col-md-10">
+          <button type="submit" class="btn btn-success">
+            Guardar cambios
+          </button>
+        </div>
+      </div>
+    </form>
+  }
+  </div>
+</div>

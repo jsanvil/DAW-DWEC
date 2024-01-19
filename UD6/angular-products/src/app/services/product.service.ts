@@ -19,6 +19,24 @@ export class ProductService {
         ));
   }
 
+  getProduct(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.productsEndpoint}/${id}`)
+      .pipe(
+        catchError((resp: HttpErrorResponse) =>
+          throwError(() =>
+            new Error(`Error obteniendo producto con 'id' ${id}. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
+        ));
+  }
+
+  updateProduct(product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.productsEndpoint}/${product.id}`, product)
+    .pipe(
+      catchError((resp: HttpErrorResponse) =>
+        throwError(() =>
+          new Error(`Error modificando producto con 'id' ${product.id}. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
+      ));
+  }
+
   // actualiza el rating de un producto
   // PATCH /products/:id { rating: number }
   updateRating(id: number, rating: number): Observable<Product> {
@@ -38,5 +56,7 @@ export class ProductService {
           new Error(`Error crear producto. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
       ));
   }
+
+
 
 }
